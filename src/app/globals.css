@@ -1,26 +1,153 @@
+/* Import Tailwind CSS */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Import Design Token Modules */
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/colors.css";
+@import "../styles/tokens/spacing.css";
+@import "../styles/tokens/theme-dark.css";
+@import "../styles/tokens/theme-light.css";
 
+/* Tailwind Theme Configuration */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Typography */
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+
+  /* Colors - map design tokens to Tailwind */
+  --color-substrate: var(--color-substrate);
+  --color-substrate-raised: var(--color-substrate-raised);
+  --color-copper: var(--color-copper);
+  --color-copper-bright: var(--color-copper-bright);
+  --color-solder: var(--color-solder);
+  --color-trace: var(--color-trace);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-signal-green: var(--color-signal-green);
+  --color-signal-red: var(--color-signal-red);
+  --color-signal-cyan: var(--color-signal-cyan);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-substrate);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  line-height: var(--leading-normal);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Typography Base Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--font-3xl);
+}
+
+h2 {
+  font-size: var(--font-2xl);
+}
+
+h3 {
+  font-size: var(--font-xl);
+}
+
+h4 {
+  font-size: var(--font-lg);
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--color-signal-cyan);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+a:hover {
+  color: var(--color-copper-bright);
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--font-sm);
+}
+
+/* Selection Styles */
+::selection {
+  background-color: var(--color-copper);
+  color: var(--color-substrate);
+}
+
+::-moz-selection {
+  background-color: var(--color-copper);
+  color: var(--color-substrate);
+}
+
+/* Focus Styles - Copper Glow Ring */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styles (Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-substrate);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-trace);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
