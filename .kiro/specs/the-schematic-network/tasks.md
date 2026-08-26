@@ -14,7 +14,7 @@ This implementation plan transforms the elite portfolio website design into a fu
 ## Tasks
 
 - [ ] 1. Design System Foundation & Configuration
-  - [-] 1.1 Create design token CSS modules and configure fonts
+  - [ ] 1.1 Create design token CSS modules and configure fonts
     - Create `src/styles/tokens/` directory with typography.css, colors.css, spacing.css files
     - Implement CSS custom properties for type scale (modular scale 1.25), color palette (PCB-inspired), and spacing system (8px-based)
     - Configure `src/lib/fonts.ts` with Space Grotesk, Inter, and JetBrains Mono using next/font/google

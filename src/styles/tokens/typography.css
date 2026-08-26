@@ -1,0 +1,39 @@
+/* Typography Design Tokens */
+/* Modular Type Scale with ratio 1.25 */
+
+:root {
+  /* Font Family Variables */
+  --font-display: var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'Courier New', monospace;
+
+  /* Type Scale (Modular Scale 1.25) */
+  --font-xs: 0.64rem; /* 10.24px - caption, metadata */
+  --font-sm: 0.80rem; /* 12.80px - small text, labels */
+  --font-base: 1.00rem; /* 16.00px - body text */
+  --font-md: 1.25rem; /* 20.00px - lead paragraph */
+  --font-lg: 1.56rem; /* 24.96px - H4 */
+  --font-xl: 1.95rem; /* 31.25px - H3 */
+  --font-2xl: 2.44rem; /* 39.06px - H2 */
+  --font-3xl: 3.05rem; /* 48.83px - H1 */
+  --font-4xl: 3.81rem; /* 61.04px - Hero display */
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+}
+
+/* Mobile: reduce by one step for better readability */
+@media (max-width: 640px) {
+  :root {
+    --font-base: 0.875rem; /* 14px */
+    --font-4xl: 3.05rem; /* 48.83px */
+  }
+}

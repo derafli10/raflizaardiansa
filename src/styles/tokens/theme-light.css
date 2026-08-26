@@ -1,0 +1,44 @@
+/* Light Theme (Blueprint View) */
+/* Applied when data-theme="light" */
+
+[data-theme='light'] {
+  /* Substrate backgrounds - blueprint paper */
+  --color-substrate: #f5f7f6;
+  --color-substrate-raised: #ffffff;
+  --color-substrate-pattern: #e8ede9;
+
+  /* Copper accents - darker for contrast */
+  --color-copper: #b87f4d;
+  --color-copper-bright: #d4a574;
+  --color-copper-dim: #9a6a41;
+
+  /* Solder metallics - darker tones */
+  --color-solder: #6b7b84;
+  --color-solder-bright: #8a98a4;
+
+  /* Signal LEDs - slightly muted */
+  --color-signal-green: #16a34a;
+  --color-signal-red: #dc2626;
+  --color-signal-amber: #d97706;
+  --color-signal-cyan: #0891b2;
+
+  /* Traces - blueprint blue-grey */
+  --color-trace: #d4dfd9;
+  --color-trace-active: var(--color-copper);
+
+  /* Text colors - inverted hierarchy */
+  --color-text-primary: #1a2b22;
+  --color-text-secondary: #4a5b52;
+  --color-text-tertiary: #7a8b82;
+
+  /* Gradients - adjusted for light mode */
+  --gradient-copper-flow: linear-gradient(135deg, #b87f4d, #d4a574, #b87f4d);
+  --gradient-signal-pulse: linear-gradient(90deg, #0891b2, #16a34a);
+  --gradient-substrate: radial-gradient(ellipse at 30% 20%, #ffffff, #f5f7f6);
+
+  /* Shadow effects - subtle for light theme */
+  --shadow-copper-glow: 0 0 15px rgba(184, 127, 77, 0.2),
+    0 0 30px rgba(184, 127, 77, 0.1);
+  --shadow-signal-glow: 0 0 12px rgba(8, 145, 178, 0.3),
+    0 0 24px rgba(8, 145, 178, 0.15);
+}

@@ -1,0 +1,44 @@
+/* Dark Theme (PCB View) - Default */
+/* Applied when data-theme="dark" */
+
+[data-theme='dark'] {
+  /* Substrate backgrounds */
+  --color-substrate: #0a0f0d;
+  --color-substrate-raised: #111a16;
+  --color-substrate-pattern: #0d1511;
+
+  /* Copper accents */
+  --color-copper: #d4a574;
+  --color-copper-bright: #e8c49a;
+  --color-copper-dim: #b89560;
+
+  /* Solder metallics */
+  --color-solder: #c0c8d4;
+  --color-solder-bright: #dfe4ea;
+
+  /* Signal LEDs */
+  --color-signal-green: #22c55e;
+  --color-signal-red: #ef4444;
+  --color-signal-amber: #f59e0b;
+  --color-signal-cyan: #06b6d4;
+
+  /* Traces */
+  --color-trace: #1a3a2a;
+  --color-trace-active: var(--color-copper);
+
+  /* Text colors */
+  --color-text-primary: #e8ede9;
+  --color-text-secondary: #a8b5ad;
+  --color-text-tertiary: #6b7b72;
+
+  /* Gradients */
+  --gradient-copper-flow: linear-gradient(135deg, #d4a574, #e8c49a, #d4a574);
+  --gradient-signal-pulse: linear-gradient(90deg, #06b6d4, #22c55e);
+  --gradient-substrate: radial-gradient(ellipse at 30% 20%, #111a16, #0a0f0d);
+
+  /* Shadow effects */
+  --shadow-copper-glow: 0 0 20px rgba(212, 165, 116, 0.3),
+    0 0 40px rgba(212, 165, 116, 0.15);
+  --shadow-signal-glow: 0 0 15px rgba(6, 182, 212, 0.4),
+    0 0 30px rgba(6, 182, 212, 0.2);
+}
