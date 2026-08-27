@@ -1,6 +1,6 @@
 # The Schematic Network — Final Tech Stack & Implementation Reference
 
-> Konsolidasi antara stack wajib di *Developer Requirements*, plan implementasi 30 fitur Awwwards-level, dan spesifikasi teknis per komponen. Gunakan dokumen ini sebagai **master checklist** saat membangun project.
+> Konsolidasi antara stack wajib di _Developer Requirements_, plan implementasi 30 fitur Awwwards-level, dan spesifikasi teknis per komponen. Gunakan dokumen ini sebagai **master checklist** saat membangun project.
 >
 > **Konsep inti:** Portfolio seorang network, hardware, software, dan cyber security engineer yang divisualisasikan sebagai **circuit board / engineering schematic hidup** — setiap section adalah node, setiap transisi adalah data flow, setiap interaksi adalah signal.
 
@@ -8,20 +8,21 @@
 
 ## 1. Core Stack (Wajib — sudah ditentukan di requirements)
 
-| Layer | Package | Versi | Install |
-|---|---|---|---|
-| Framework | `next` | ^14.2.0 | `npx create-next-app@14 . --typescript --tailwind --app` |
-| Bahasa | `typescript` | ^5.4.0 | (bawaan create-next-app) |
-| Styling | `tailwindcss` | ^3.4.0 | (bawaan create-next-app) |
-| Animasi utama | `gsap` | ^3.12.5 | `npm install gsap` |
-| Smooth scroll | `lenis` | ^1.0.42 | `npm install lenis` |
-| Vector motion | `@rive-app/react-canvas` | ^4.12.0 | `npm install @rive-app/react-canvas` |
-| Audio engine | `howler` + `@types/howler` | ^2.2.4 | `npm install howler @types/howler` |
-| State management | `zustand` | ^4.5.2 | `npm install zustand` |
+| Layer            | Package                    | Versi   | Install                                                  |
+| ---------------- | -------------------------- | ------- | -------------------------------------------------------- |
+| Framework        | `next`                     | ^14.2.0 | `npx create-next-app@14 . --typescript --tailwind --app` |
+| Bahasa           | `typescript`               | ^5.4.0  | (bawaan create-next-app)                                 |
+| Styling          | `tailwindcss`              | ^3.4.0  | (bawaan create-next-app)                                 |
+| Animasi utama    | `gsap`                     | ^3.12.5 | `npm install gsap`                                       |
+| Smooth scroll    | `lenis`                    | ^1.0.42 | `npm install lenis`                                      |
+| Vector motion    | `@rive-app/react-canvas`   | ^4.12.0 | `npm install @rive-app/react-canvas`                     |
+| Audio engine     | `howler` + `@types/howler` | ^2.2.4  | `npm install howler @types/howler`                       |
+| State management | `zustand`                  | ^4.5.2  | `npm install zustand`                                    |
 
 **Catatan:** Package Lenis dulu bernama `@studio-freight/lenis`, sekarang dipublikasikan langsung sebagai `lenis` di npm. Cek `npm view lenis versions` sebelum instal untuk memastikan versi terbaru masih kompatibel.
 
 GSAP plugin yang dipakai (semua dari paket `gsap` yang sama, tinggal `import` dan `gsap.registerPlugin(...)`):
+
 - `ScrollTrigger`
 - `DrawSVGPlugin`
 - `MotionPathPlugin`
@@ -35,10 +36,10 @@ GSAP plugin yang dipakai (semua dari paket `gsap` yang sama, tinggal `import` da
 
 ## 2. Animation Layer Tambahan
 
-| Package | Fungsi | Install |
-|---|---|---|
-| `motion` (rebrand dari Framer Motion) | Micro-interaction React-native: hover state, `AnimatePresence` untuk exit animation modal (Legacy Protocol), layout animation Bento Grid | `npm install motion` |
-| GSAP `SplitText` | Kinetic typography di Hero Section (animasi huruf/kata) — disebut di requirements tapi belum ada plugin spesifik | Sudah termasuk di `gsap` (cek status free/berbayar) |
+| Package                               | Fungsi                                                                                                                                   | Install                                             |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `motion` (rebrand dari Framer Motion) | Micro-interaction React-native: hover state, `AnimatePresence` untuk exit animation modal (Legacy Protocol), layout animation Bento Grid | `npm install motion`                                |
+| GSAP `SplitText`                      | Kinetic typography di Hero Section (animasi huruf/kata) — disebut di requirements tapi belum ada plugin spesifik                         | Sudah termasuk di `gsap` (cek status free/berbayar) |
 
 **Prinsip pembagian tugas:** GSAP untuk scroll-driven timeline kompleks & SVG (Silicon-to-Syntax sequence), Motion untuk interaksi komponen React biasa. Jangan pakai dua-duanya untuk hal yang sama — boros bundle size.
 
@@ -46,44 +47,44 @@ GSAP plugin yang dipakai (semua dari paket `gsap` yang sama, tinggal `import` da
 
 ## 3. UI Component System
 
-| Package | Fungsi | Install |
-|---|---|---|
-| `@headlessui/react` | Dialog untuk Legacy Protocol Modal (sudah di kode contoh requirements) | `npm install @headlessui/react` |
+| Package                    | Fungsi                                                                     | Install                                |
+| -------------------------- | -------------------------------------------------------------------------- | -------------------------------------- |
+| `@headlessui/react`        | Dialog untuk Legacy Protocol Modal (sudah di kode contoh requirements)     | `npm install @headlessui/react`        |
 | `class-variance-authority` | Variant management untuk button/badge/card (state hover, active, disabled) | `npm install class-variance-authority` |
-| `tailwind-merge` + `clsx` | Merge className Tailwind secara aman tanpa konflik utility | `npm install tailwind-merge clsx` |
-| `lucide-react` | Icon set (sudah dipakai di kode contoh: `Terminal`, `X`, `ExternalLink`) | `npm install lucide-react` |
+| `tailwind-merge` + `clsx`  | Merge className Tailwind secara aman tanpa konflik utility                 | `npm install tailwind-merge clsx`      |
+| `lucide-react`             | Icon set (sudah dipakai di kode contoh: `Terminal`, `X`, `ExternalLink`)   | `npm install lucide-react`             |
 
 ---
 
 ## 4. Performance, SEO & Observability
 
-| Package | Fungsi | Install |
-|---|---|---|
+| Package                  | Fungsi                                                                        | Install                              |
+| ------------------------ | ----------------------------------------------------------------------------- | ------------------------------------ |
 | `@vercel/speed-insights` | Real-user performance data (melengkapi target Lighthouse >95 di requirements) | `npm install @vercel/speed-insights` |
-| `@vercel/analytics` | Privacy-friendly page analytics | `npm install @vercel/analytics` |
-| Next.js Metadata API | Structured SEO + JSON-LD `Person`/`ProfilePage` schema | Built-in, tidak perlu install |
-| `next/og` (Vercel OG) | Generate social preview image dinamis saat link di-share | Built-in di Next.js App Router |
+| `@vercel/analytics`      | Privacy-friendly page analytics                                               | `npm install @vercel/analytics`      |
+| Next.js Metadata API     | Structured SEO + JSON-LD `Person`/`ProfilePage` schema                        | Built-in, tidak perlu install        |
+| `next/og` (Vercel OG)    | Generate social preview image dinamis saat link di-share                      | Built-in di Next.js App Router       |
 
 ---
 
 ## 5. Dev Quality & Engineering Signal
 
-| Package | Fungsi | Install |
-|---|---|---|
-| `eslint` + `prettier` | Konsistensi kode | Bawaan create-next-app, tambah Prettier manual |
-| `husky` + `lint-staged` | Pre-commit hook — cegah commit kode berantakan | `npm install -D husky lint-staged` |
-| `vitest` | Unit test | `npm install -D vitest` |
-| `@playwright/test` | E2E test (misal: pastikan modal Legacy Protocol bisa dibuka) | `npm install -D @playwright/test` |
-| GitHub Actions | CI badge "build passing" di README | Config `.github/workflows/ci.yml` |
+| Package                 | Fungsi                                                       | Install                                        |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| `eslint` + `prettier`   | Konsistensi kode                                             | Bawaan create-next-app, tambah Prettier manual |
+| `husky` + `lint-staged` | Pre-commit hook — cegah commit kode berantakan               | `npm install -D husky lint-staged`             |
+| `vitest`                | Unit test                                                    | `npm install -D vitest`                        |
+| `@playwright/test`      | E2E test (misal: pastikan modal Legacy Protocol bisa dibuka) | `npm install -D @playwright/test`              |
+| GitHub Actions          | CI badge "build passing" di README                           | Config `.github/workflows/ci.yml`              |
 
 ---
 
 ## 6. Opsional — Untuk Skalabilitas Jangka Panjang
 
-| Package | Fungsi | Kapan dipakai |
-|---|---|---|
+| Package                       | Fungsi                                                     | Kapan dipakai                         |
+| ----------------------------- | ---------------------------------------------------------- | ------------------------------------- |
 | `velite` atau `contentlayer2` | MDX-based case study per project, edit tanpa redeploy code | Kalau mau nambah detail project rutin |
-| `resend` | API email modern untuk contact form | Kalau ada form kontak |
+| `resend`                      | API email modern untuk contact form                        | Kalau ada form kontak                 |
 
 ---
 
@@ -127,15 +128,15 @@ npm install -D husky lint-staged vitest @playwright/test prettier
 
 ## 9. Design System Foundation
 
-### 9.1 Typography System *(Fitur #1)*
+### 9.1 Typography System _(Fitur #1)_
 
-**Konsep:** Typeface yang terasa *engineered* — monospace untuk data/kode, geometric sans untuk heading, humanist untuk body. Seperti label pada schematic diagram.
+**Konsep:** Typeface yang terasa _engineered_ — monospace untuk data/kode, geometric sans untuk heading, humanist untuk body. Seperti label pada schematic diagram.
 
-| Role | Font | Weight | Penggunaan |
-|---|---|---|---|
-| Display / H1 | Space Grotesk (Google Fonts) | 700, 500 | Hero statement, section titles |
-| Body | Inter (Google Fonts) | 400, 500 | Paragraf, deskripsi |
-| Code / Data | JetBrains Mono (Google Fonts) | 400, 700 | Terminal output, skill labels, metadata |
+| Role         | Font                          | Weight   | Penggunaan                              |
+| ------------ | ----------------------------- | -------- | --------------------------------------- |
+| Display / H1 | Space Grotesk (Google Fonts)  | 700, 500 | Hero statement, section titles          |
+| Body         | Inter (Google Fonts)          | 400, 500 | Paragraf, deskripsi                     |
+| Code / Data  | JetBrains Mono (Google Fonts) | 400, 700 | Terminal output, skill labels, metadata |
 
 **Type Scale (modular — ratio 1.25 "Major Third"):**
 
@@ -155,38 +156,38 @@ npm install -D husky lint-staged vitest @playwright/test prettier
 
 ---
 
-### 9.2 Color System *(Fitur #2)*
+### 9.2 Color System _(Fitur #2)_
 
 **Konsep:** Palette terinspirasi **PCB (Printed Circuit Board)** — dark green substrate, copper traces, solder silver, LED indicator colors.
 
-| Token | Hex | Peran | Analogi Schematic |
-|---|---|---|---|
-| `--color-substrate` | `#0a0f0d` | Background utama (dark) | PCB substrate hijau tua |
-| `--color-substrate-raised` | `#111a16` | Surface / card bg | Layer PCB terangkat |
-| `--color-substrate-light` | `#f5f7f6` | Background (light mode) | Kertas schematic |
-| `--color-copper` | `#d4a574` | Accent primer, CTA | Copper trace pada PCB |
-| `--color-copper-bright` | `#e8c49a` | Hover state copper | Copper terkena cahaya |
-| `--color-solder` | `#c0c8d4` | Text secondary, border | Solder point |
-| `--color-signal-green` | `#22c55e` | Status aktif, success | LED hijau — online |
-| `--color-signal-red` | `#ef4444` | Error, warning | LED merah — fault |
-| `--color-signal-amber` | `#f59e0b` | Caution, highlight | LED amber — warning |
-| `--color-signal-cyan` | `#06b6d4` | Links, interactive | Signal trace aktif |
-| `--color-trace` | `#1a3a2a` | Garis halus, separator | PCB trace dormant |
-| `--color-text-primary` | `#e8ede9` | Text utama (dark) | Label komponen |
+| Token                      | Hex       | Peran                   | Analogi Schematic       |
+| -------------------------- | --------- | ----------------------- | ----------------------- |
+| `--color-substrate`        | `#0a0f0d` | Background utama (dark) | PCB substrate hijau tua |
+| `--color-substrate-raised` | `#111a16` | Surface / card bg       | Layer PCB terangkat     |
+| `--color-substrate-light`  | `#f5f7f6` | Background (light mode) | Kertas schematic        |
+| `--color-copper`           | `#d4a574` | Accent primer, CTA      | Copper trace pada PCB   |
+| `--color-copper-bright`    | `#e8c49a` | Hover state copper      | Copper terkena cahaya   |
+| `--color-solder`           | `#c0c8d4` | Text secondary, border  | Solder point            |
+| `--color-signal-green`     | `#22c55e` | Status aktif, success   | LED hijau — online      |
+| `--color-signal-red`       | `#ef4444` | Error, warning          | LED merah — fault       |
+| `--color-signal-amber`     | `#f59e0b` | Caution, highlight      | LED amber — warning     |
+| `--color-signal-cyan`      | `#06b6d4` | Links, interactive      | Signal trace aktif      |
+| `--color-trace`            | `#1a3a2a` | Garis halus, separator  | PCB trace dormant       |
+| `--color-text-primary`     | `#e8ede9` | Text utama (dark)       | Label komponen          |
 
 **Gradients:**
 
 ```css
---gradient-copper-flow:  linear-gradient(135deg, #d4a574, #e8c49a, #d4a574);
+--gradient-copper-flow: linear-gradient(135deg, #d4a574, #e8c49a, #d4a574);
 --gradient-signal-pulse: linear-gradient(90deg, #06b6d4, #22c55e);
---gradient-substrate:    radial-gradient(ellipse at 30% 20%, #111a16, #0a0f0d);
+--gradient-substrate: radial-gradient(ellipse at 30% 20%, #111a16, #0a0f0d);
 ```
 
 **File:** `src/styles/tokens/colors.css`, `tailwind.config.ts`
 
 ---
 
-### 9.3 Spacing & Grid System *(Fitur #3)*
+### 9.3 Spacing & Grid System _(Fitur #3)_
 
 **Konsep:** Grid 8px seperti grid pada kertas gambar teknik — presisi, terukur, konsisten.
 
@@ -202,27 +203,27 @@ npm install -D husky lint-staged vitest @playwright/test prettier
 
 **Responsive Breakpoints:**
 
-| Breakpoint | Width | Target | Layout |
-|---|---|---|---|
-| `sm` | 640px | Mobile landscape | 4-column |
-| `md` | 768px | Tablet portrait | 8-column |
-| `lg` | 1024px | Tablet landscape | 12-column |
-| `xl` | 1280px | Desktop | 12-column |
-| `2xl` | 1536px | Large desktop | 12-column, max-width |
+| Breakpoint | Width  | Target           | Layout               |
+| ---------- | ------ | ---------------- | -------------------- |
+| `sm`       | 640px  | Mobile landscape | 4-column             |
+| `md`       | 768px  | Tablet portrait  | 8-column             |
+| `lg`       | 1024px | Tablet landscape | 12-column            |
+| `xl`       | 1280px | Desktop          | 12-column            |
+| `2xl`      | 1536px | Large desktop    | 12-column, max-width |
 
 **File:** `src/styles/tokens/spacing.css`, `src/components/layout/Container.tsx`, `src/components/layout/Grid.tsx`
 
 ---
 
-### 9.4 Visual Identity & Iconography *(Fitur #4)*
+### 9.4 Visual Identity & Iconography _(Fitur #4)_
 
-**Konsep:** Logo berbentuk node jaringan — titik terhubung membentuk inisial/circuit abstrak. Iconography: *technical drawing* style — thin stroke, geometric, monoline.
+**Konsep:** Logo berbentuk node jaringan — titik terhubung membentuk inisial/circuit abstrak. Iconography: _technical drawing_ style — thin stroke, geometric, monoline.
 
-| Variant | Penggunaan | Spesifikasi |
-|---|---|---|
-| Logo Mark | Favicon, mobile nav, preloader | SVG, 32x32 viewBox, animatable paths |
-| Logo Type | Nav desktop, footer | SVG, "Rafli Zaardiansa" Space Grotesk |
-| Logo Full | OG image, about section | Mark + Type horizontal |
+| Variant   | Penggunaan                     | Spesifikasi                           |
+| --------- | ------------------------------ | ------------------------------------- |
+| Logo Mark | Favicon, mobile nav, preloader | SVG, 32x32 viewBox, animatable paths  |
+| Logo Type | Nav desktop, footer            | SVG, "Rafli Zaardiansa" Space Grotesk |
+| Logo Full | OG image, about section        | Mark + Type horizontal                |
 
 **Icon Style:** Lucide-react base + custom SVG untuk network concepts (router, switch, firewall, packet, latency). Stroke 1.5px, sizes 16/20/24/32px.
 
@@ -232,7 +233,7 @@ npm install -D husky lint-staged vitest @playwright/test prettier
 
 ---
 
-### 9.5 Dark Mode System *(Fitur #5)*
+### 9.5 Dark Mode System _(Fitur #5)_
 
 **Konsep:** Dark = **PCB view** (default). Light = **Blueprint/schematic print**.
 
@@ -255,17 +256,17 @@ CSS: <html data-theme="dark|light">
 
 ---
 
-### 9.6 Custom Cursor System *(Fitur #6)*
+### 9.6 Custom Cursor System _(Fitur #6)_
 
 **Konsep:** Cursor sebagai **probe/test point** — lingkaran yang bereaksi terhadap elemen, seperti probe menyentuh test point pada PCB.
 
-| Context | State | Visual |
-|---|---|---|
-| Default | `dot` | 8px circle, `--color-copper`, outline |
-| Hover link/button | `grow` | Expand 48px, semi-transparent fill |
-| Hover teks | `blend` | 64px, `mix-blend-mode: difference` |
-| Hover project card | `view` | Expand + "VIEW" label |
-| Mobile | `none` | Hidden (`@media (pointer: coarse)`) |
+| Context            | State   | Visual                                |
+| ------------------ | ------- | ------------------------------------- |
+| Default            | `dot`   | 8px circle, `--color-copper`, outline |
+| Hover link/button  | `grow`  | Expand 48px, semi-transparent fill    |
+| Hover teks         | `blend` | 64px, `mix-blend-mode: difference`    |
+| Hover project card | `view`  | Expand + "VIEW" label                 |
+| Mobile             | `none`  | Hidden (`@media (pointer: coarse)`)   |
 
 **Technical:** Rendered via portal, positioned with `requestAnimationFrame` + lerp (smooth follow), GSAP untuk state transitions, `pointer-events: none`.
 
@@ -275,7 +276,7 @@ CSS: <html data-theme="dark|light">
 
 ## 10. Animation Pipeline
 
-### 10.1 Preloader & Reveal Sequence *(Fitur #7)*
+### 10.1 Preloader & Reveal Sequence _(Fitur #7)_
 
 **Konsep:** Boot sequence — perangkat jaringan booting: POST → firmware → interfaces up → READY.
 
@@ -296,7 +297,7 @@ Hanya tampil sekali per session (`sessionStorage` check).
 
 ---
 
-### 10.2 Scroll-Driven Narrative *(Fitur #8)*
+### 10.2 Scroll-Driven Narrative _(Fitur #8)_
 
 **Konsep:** Scroll = **data packet traversing a network.** Persistent SVG circuit path di sisi layar yang "lights up" seiring scroll progress.
 
@@ -316,34 +317,34 @@ GSAP ScrollTrigger: master timeline `scrub: 1`, per-section `pin: true`, `gsap.c
 
 ---
 
-### 10.3 Micro-Interactions *(Fitur #9)*
+### 10.3 Micro-Interactions _(Fitur #9)_
 
 **Konsep:** Setiap interaksi = **signal** — hover = probe, click = signal sent, feedback = acknowledged.
 
-| Element | Interaction | Animation | Engine |
-|---|---|---|---|
-| Button primary | Hover | Glow border copper pulse, scale 1.02 | Motion |
-| Button secondary | Hover | Border trace DrawSVG | GSAP |
-| Card project | Hover | 3D tilt + glow | Motion + CSS |
-| Card project | Hover | Magnetic pull (100px radius) | Custom hook |
-| Nav link | Hover | Underline DrawSVG left→right | GSAP |
-| Badge/tag | Hover | Background slide fill | CSS transition |
-| Input field | Focus | Border glow + label float | CSS + Motion |
+| Element          | Interaction | Animation                            | Engine         |
+| ---------------- | ----------- | ------------------------------------ | -------------- |
+| Button primary   | Hover       | Glow border copper pulse, scale 1.02 | Motion         |
+| Button secondary | Hover       | Border trace DrawSVG                 | GSAP           |
+| Card project     | Hover       | 3D tilt + glow                       | Motion + CSS   |
+| Card project     | Hover       | Magnetic pull (100px radius)         | Custom hook    |
+| Nav link         | Hover       | Underline DrawSVG left→right         | GSAP           |
+| Badge/tag        | Hover       | Background slide fill                | CSS transition |
+| Input field      | Focus       | Border glow + label float            | CSS + Motion   |
 
 **File:** `src/hooks/useMagneticElement.ts`, `src/hooks/useTiltEffect.ts`, `src/components/ui/MagneticWrapper.tsx`, `src/styles/interactions.css`
 
 ---
 
-### 10.4 Page Transitions *(Fitur #10)*
+### 10.4 Page Transitions _(Fitur #10)_
 
 **Konsep:** Route change = **packet switching** — content dissolves via circuit-pattern mask.
 
-| Transition | Trigger | Visual |
-|---|---|---|
-| Section scroll | Scroll | Fade + stagger children (GSAP) |
-| Modal open | Click card | Circuit-trace border expand → content fade in |
-| Modal close | X / Escape | Reverse circuit-trace → fade out |
-| 404 | Invalid route | "SIGNAL LOST" glitch |
+| Transition     | Trigger       | Visual                                        |
+| -------------- | ------------- | --------------------------------------------- |
+| Section scroll | Scroll        | Fade + stagger children (GSAP)                |
+| Modal open     | Click card    | Circuit-trace border expand → content fade in |
+| Modal close    | X / Escape    | Reverse circuit-trace → fade out              |
+| 404            | Invalid route | "SIGNAL LOST" glitch                          |
 
 Implementation: `AnimatePresence` wrapper di `layout.tsx`, `exit` variants per component.
 
@@ -351,23 +352,23 @@ Implementation: `AnimatePresence` wrapper di `layout.tsx`, `exit` variants per c
 
 ---
 
-### 10.5 Kinetic Typography *(Fitur #11)*
+### 10.5 Kinetic Typography _(Fitur #11)_
 
 **Konsep:** Teks muncul seperti **data stream** — karakter ditransmisikan melalui kabel.
 
-| Location | Animation | Timing |
-|---|---|---|
-| Hero H1 | SplitText per-char reveal | 0.03s/char, power3.out |
-| Section titles | SplitText per-word slide up | 0.08s/word, ScrollTrigger |
-| Stats/numbers | Count-up | 2s, ScrollTrigger |
-| Code snippets | Typewriter | 0.02s/char |
-| Tagline | Scramble text (random → resolved) | GSAP TextPlugin |
+| Location       | Animation                         | Timing                    |
+| -------------- | --------------------------------- | ------------------------- |
+| Hero H1        | SplitText per-char reveal         | 0.03s/char, power3.out    |
+| Section titles | SplitText per-word slide up       | 0.08s/word, ScrollTrigger |
+| Stats/numbers  | Count-up                          | 2s, ScrollTrigger         |
+| Code snippets  | Typewriter                        | 0.02s/char                |
+| Tagline        | Scramble text (random → resolved) | GSAP TextPlugin           |
 
 **File:** `src/components/typography/SplitTextReveal.tsx`, `src/components/typography/TypewriterText.tsx`, `src/components/typography/ScrambleText.tsx`, `src/components/typography/CountUp.tsx`
 
 ---
 
-### 10.6 SVG Circuit Animation ★ SIGNATURE INTERACTION *(Fitur #12)*
+### 10.6 SVG Circuit Animation ★ SIGNATURE INTERACTION _(Fitur #12)_
 
 **Konsep:** Inti visual "The Schematic Network" — SVG circuit board yang hidup.
 
@@ -381,6 +382,7 @@ Circuit Layer Stack:
 ```
 
 **Key Animations:**
+
 1. DrawSVG traces: `drawSVG: "0%"` → `"100%"` on scroll
 2. Node activation: scale + glow saat section enter
 3. Data flow dots: circles along MotionPath (loop)
@@ -390,18 +392,18 @@ Circuit Layer Stack:
 
 ---
 
-### 10.7 Performance — 60fps Target *(Fitur #13)*
+### 10.7 Performance — 60fps Target _(Fitur #13)_
 
 **Konsep:** Jank = packet loss. Target: **0% frame drop.**
 
-| Technique | Detail |
-|---|---|
-| GPU-accelerated only | Hanya `transform` + `opacity` — TIDAK `width/height/top/left` |
-| `will-change` selective | Hanya saat animasi aktif, remove setelah selesai |
-| `gsap.context()` cleanup | Wajib di setiap `useLayoutEffect` |
-| Lenis + RAF sync | Single RAF loop untuk Lenis + GSAP ticker |
-| `@media (prefers-reduced-motion)` | Disable semua animasi |
-| Bundle splitting | Dynamic import untuk Rive canvas |
+| Technique                         | Detail                                                        |
+| --------------------------------- | ------------------------------------------------------------- |
+| GPU-accelerated only              | Hanya `transform` + `opacity` — TIDAK `width/height/top/left` |
+| `will-change` selective           | Hanya saat animasi aktif, remove setelah selesai              |
+| `gsap.context()` cleanup          | Wajib di setiap `useLayoutEffect`                             |
+| Lenis + RAF sync                  | Single RAF loop untuk Lenis + GSAP ticker                     |
+| `@media (prefers-reduced-motion)` | Disable semua animasi                                         |
+| Bundle splitting                  | Dynamic import untuk Rive canvas                              |
 
 **Monitoring:** Chrome DevTools ≤16.67ms/frame, `@vercel/speed-insights`, Lighthouse CI.
 
@@ -411,7 +413,7 @@ Circuit Layer Stack:
 
 ## 11. Content Architecture & Storytelling
 
-### 11.1 Hero Section *(Fitur #14)*
+### 11.1 Hero Section _(Fitur #14)_
 
 **Konsep:** First screen = **network control center.** Nama (callsign), role (designation), circuit animation booting.
 
@@ -438,7 +440,7 @@ Circuit Layer Stack:
 
 ---
 
-### 11.2 About — Personal Narrative *(Fitur #15)*
+### 11.2 About — Personal Narrative _(Fitur #15)_
 
 **Konsep:** About = **system specification sheet** yang diceritakan secara manusiawi.
 
@@ -446,14 +448,16 @@ Circuit Layer Stack:
 Origin Story → Education Path (SMK & IPB) → Philosophy → Credentials (LinkedIn-style) → Current Focus
 ```
 
-Bukan daftar spec, tapi narasi *kenapa* berkecimpung di dunia network, hardware, software, dan cyber security — momen "aha", filosofi ("infrastruktur terbaik tak terlihat"), dan fokus saat ini.
+Bukan daftar spec, tapi narasi _kenapa_ berkecimpung di dunia network, hardware, software, dan cyber security — momen "aha", filosofi ("infrastruktur terbaik tak terlihat"), dan fokus saat ini.
 
 **Detail Riwayat Pendidikan:**
+
 - **SMK Negeri 1 Cikarang Selatan** (Kompetensi Keahlian: Teknik Komputer dan Jaringan)
 - **IPB University** (Program Studi: Teknologi Rekayasa Komputer (D4) — Sedang Menempuh Pendidikan)
 
 **Credentials & Certificate Card Layout (LinkedIn-Style Template):**
 Komponen kartu sertifikat (`CertificateCard.tsx`) yang meniru format resmi LinkedIn Certification:
+
 - **Issuer Logo / Icon:** Representasi visual instansi penerbit sertifikat.
 - **Certificate Title / Name:** Judul sertifikasi yang diraih.
 - **Issuing Organization:** Nama organisasi penerbit.
@@ -462,6 +466,7 @@ Komponen kartu sertifikat (`CertificateCard.tsx`) yang meniru format resmi Linke
 - **Verification CTA Link:** Tombol "Show credential" dengan ikon `ExternalLink` menuju URL verifikasi resmi.
 
 **File:**
+
 - `src/components/sections/About.tsx`
 - `src/components/sections/about/OriginStory.tsx`
 - `src/components/sections/about/EducationPath.tsx`
@@ -470,7 +475,7 @@ Komponen kartu sertifikat (`CertificateCard.tsx`) yang meniru format resmi Linke
 
 ---
 
-### 11.3 Project Case Studies *(Fitur #16)*
+### 11.3 Project Case Studies _(Fitur #16)_
 
 **Konsep:** Setiap project = **network topology yang bisa di-explore.** Card → modal deep-dive.
 
@@ -483,7 +488,7 @@ Modal:     PROBLEM → (trace) → PROCESS (interactive SVG) → (trace) → SOL
 
 ---
 
-### 11.4 Skills — Interactive Network Topology *(Fitur #17)*
+### 11.4 Skills — Interactive Network Topology _(Fitur #17)_
 
 **Konsep:** Skills bukan list, tapi **interactive topology graph.** Setiap skill = node, terhubung berdasarkan relasi. Hover = highlight connections.
 
@@ -501,7 +506,7 @@ SVG-based (accessibility + SEO). Node colors by proficiency: green (proficient),
 
 ---
 
-### 11.5 Contact — TCP Handshake Form *(Fitur #18)*
+### 11.5 Contact — TCP Handshake Form _(Fitur #18)_
 
 **Konsep:** Form = **TCP 3-way handshake.**
 
@@ -518,7 +523,7 @@ Submit via `resend` API. Success: animated circuit → checkmark morph.
 
 ---
 
-### 11.6 Navigation System *(Fitur #19)*
+### 11.6 Navigation System _(Fitur #19)_
 
 **Konsep:** Nav = **network dashboard status bar.**
 
@@ -535,7 +540,7 @@ Mobile:  Hamburger → fullscreen overlay + circuit trace menu animation
 
 ---
 
-### 11.7 Footer *(Fitur #20)*
+### 11.7 Footer _(Fitur #20)_
 
 **Konsep:** End of circuit / **ground plane ⏚.**
 
@@ -553,7 +558,7 @@ About · Projects · Skills · Contact
 
 ## 12. Component Architecture
 
-### 12.1 Atomic Design Folder Structure *(Fitur #21)*
+### 12.1 Atomic Design Folder Structure _(Fitur #21)_
 
 ```
 src/
@@ -589,39 +594,39 @@ src/
 
 ---
 
-### 12.2 UI Component Primitives *(Fitur #22)*
+### 12.2 UI Component Primitives _(Fitur #22)_
 
 CVA (Class Variance Authority) pattern untuk semua primitives:
 
-| Component | Variants | Special Features |
-|---|---|---|
-| `Button` | primary, secondary, ghost × sm, md, lg | Magnetic hover, circuit-border animation |
-| `Card` | default, elevated, interactive | 3D tilt on hover, glow border |
-| `Badge` | skill, status, tag | Color-coded by category |
-| `Modal` | project, generic | Headless UI Dialog, AnimatePresence |
-| `Input` | text, email, textarea | Floating label, focus glow |
-| `Tooltip` | top, bottom, left, right | Fade + translate |
-| `Skeleton` | line, circle, card | Pulse animation matching component shapes |
-| `CertificateCard` | default, active | LinkedIn-style certification card layout with issuer logo, ID, and verification link |
+| Component         | Variants                               | Special Features                                                                     |
+| ----------------- | -------------------------------------- | ------------------------------------------------------------------------------------ |
+| `Button`          | primary, secondary, ghost × sm, md, lg | Magnetic hover, circuit-border animation                                             |
+| `Card`            | default, elevated, interactive         | 3D tilt on hover, glow border                                                        |
+| `Badge`           | skill, status, tag                     | Color-coded by category                                                              |
+| `Modal`           | project, generic                       | Headless UI Dialog, AnimatePresence                                                  |
+| `Input`           | text, email, textarea                  | Floating label, focus glow                                                           |
+| `Tooltip`         | top, bottom, left, right               | Fade + translate                                                                     |
+| `Skeleton`        | line, circle, card                     | Pulse animation matching component shapes                                            |
+| `CertificateCard` | default, active                        | LinkedIn-style certification card layout with issuer logo, ID, and verification link |
 
 **File:** `src/components/ui/Button.tsx`, `Card.tsx`, `Badge.tsx`, `Modal.tsx`, `Input.tsx`, `Tooltip.tsx`, `Skeleton.tsx`, `CertificateCard.tsx`
 
 ---
 
-### 12.3 Global State — Zustand *(Fitur #23)*
+### 12.3 Global State — Zustand _(Fitur #23)_
 
-| Store | State | Persist |
-|---|---|---|
-| `theme-store` | `mode`, `resolved` | localStorage |
-| `audio-store` | `isMuted`, `volume`, `isAmbientPlaying` | — |
-| `nav-store` | `activeSection`, `isMenuOpen`, `scrollProgress` | — |
-| `app-store` | `isLoaded`, `isPreloaderComplete`, `cursorState` | — |
+| Store         | State                                            | Persist      |
+| ------------- | ------------------------------------------------ | ------------ |
+| `theme-store` | `mode`, `resolved`                               | localStorage |
+| `audio-store` | `isMuted`, `volume`, `isAmbientPlaying`          | —            |
+| `nav-store`   | `activeSection`, `isMenuOpen`, `scrollProgress`  | —            |
+| `app-store`   | `isLoaded`, `isPreloaderComplete`, `cursorState` | —            |
 
 **File:** `src/stores/theme-store.ts`, `audio-store.ts`, `nav-store.ts`, `app-store.ts`
 
 ---
 
-### 12.4 Lenis + GSAP Bridge *(Fitur #24)*
+### 12.4 Lenis + GSAP Bridge _(Fitur #24)_
 
 ```typescript
 // Single RAF loop — Lenis scroll synced with GSAP ticker
@@ -636,7 +641,7 @@ gsap.ticker.lagSmoothing(0);
 
 ## 13. Technical Infrastructure
 
-### 13.1 SEO & Metadata *(Fitur #25)*
+### 13.1 SEO & Metadata _(Fitur #25)_
 
 ```
 Next.js Metadata API:
@@ -653,7 +658,7 @@ Dynamic OG image via `next/og` (Vercel OG).
 
 ---
 
-### 13.2 Next.js Config *(Fitur #26)*
+### 13.2 Next.js Config _(Fitur #26)_
 
 ```typescript
 // next.config.ts additions
@@ -670,9 +675,10 @@ Dynamic OG image via `next/og` (Vercel OG).
 
 ---
 
-### 13.3 Error Pages *(Fitur #27)*
+### 13.3 Error Pages _(Fitur #27)_
 
 **404 — "SIGNAL LOST":**
+
 ```
 ╳ ─ ─ ─ ╳ ─ ─ ─ ╳  (broken circuit traces)
 SIGNAL LOST · 404
@@ -686,15 +692,15 @@ SIGNAL LOST · 404
 
 ---
 
-### 13.4 Loading & Skeleton States *(Fitur #28)*
+### 13.4 Loading & Skeleton States _(Fitur #28)_
 
-| Context | Loading UI |
-|---|---|
-| Initial load | Preloader (boot sequence) |
-| Route transition | CircuitWipe |
-| Modal content | Skeleton pulse |
-| Images | Blur placeholder → sharp |
-| Form submit | Circuit trace spinning |
+| Context          | Loading UI                |
+| ---------------- | ------------------------- |
+| Initial load     | Preloader (boot sequence) |
+| Route transition | CircuitWipe               |
+| Modal content    | Skeleton pulse            |
+| Images           | Blur placeholder → sharp  |
+| Form submit      | Circuit trace spinning    |
 
 **File:** `src/app/loading.tsx`, `src/components/ui/Skeleton.tsx`, `src/components/ui/LoadingSpinner.tsx`
 
@@ -702,35 +708,35 @@ SIGNAL LOST · 404
 
 ## 14. Accessibility & Responsiveness
 
-### 14.1 Responsive Design — Mobile First *(Fitur #29)*
+### 14.1 Responsive Design — Mobile First _(Fitur #29)_
 
-| Breakpoint | Changes |
-|---|---|
+| Breakpoint       | Changes                                                           |
+| ---------------- | ----------------------------------------------------------------- |
 | < 640px (mobile) | Single column, hamburger, simplified circuits, 44px touch targets |
-| 640-768px | 2-col projects, side nav |
-| 768-1024px | Full nav, 2-col about, skill graph scales |
-| 1024-1280px | Full layout, all animations, 3-col projects |
-| > 1280px | Max-width container, larger type |
+| 640-768px        | 2-col projects, side nav                                          |
+| 768-1024px       | Full nav, 2-col about, skill graph scales                         |
+| 1024-1280px      | Full layout, all animations, 3-col projects                       |
+| > 1280px         | Max-width container, larger type                                  |
 
 **Key decisions:** Reduced circuit complexity on mobile, cursor disabled on touch, parallax disabled on mobile, type scale -1 step.
 
 ---
 
-### 14.2 Accessibility — WCAG 2.1 AA *(Fitur #30)*
+### 14.2 Accessibility — WCAG 2.1 AA _(Fitur #30)_
 
-| Requirement | Implementation |
-|---|---|
-| Color contrast | 4.5:1 ratio verified (copper on substrate) |
-| Keyboard nav | All focusable, copper glow focus ring |
-| Screen reader | Semantic HTML5, `aria-label` on icon buttons |
-| Skip to content | First focusable element |
-| Reduced motion | `prefers-reduced-motion` disables all animation |
-| Focus trap | Modal focus management |
-| Alt text | All images described |
-| Heading hierarchy | Single `<h1>`, proper `<h2>`→`<h6>` |
-| ARIA landmarks | `<nav>`, `<main>`, `<footer>`, `<section aria-label>` |
-| Touch targets | Min 44×44px |
-| Language | `<html lang="en">` |
+| Requirement       | Implementation                                        |
+| ----------------- | ----------------------------------------------------- |
+| Color contrast    | 4.5:1 ratio verified (copper on substrate)            |
+| Keyboard nav      | All focusable, copper glow focus ring                 |
+| Screen reader     | Semantic HTML5, `aria-label` on icon buttons          |
+| Skip to content   | First focusable element                               |
+| Reduced motion    | `prefers-reduced-motion` disables all animation       |
+| Focus trap        | Modal focus management                                |
+| Alt text          | All images described                                  |
+| Heading hierarchy | Single `<h1>`, proper `<h2>`→`<h6>`                   |
+| ARIA landmarks    | `<nav>`, `<main>`, `<footer>`, `<section aria-label>` |
+| Touch targets     | Min 44×44px                                           |
+| Language          | `<html lang="en">`                                    |
 
 **File:** `src/components/ui/SkipToContent.tsx`, `src/hooks/useReducedMotion.ts`, `src/components/ui/FocusTrap.tsx`
 
@@ -740,29 +746,30 @@ SIGNAL LOST · 404
 
 **Total: ~65 files across 15 directories.**
 
-| Domain | Files | Key Output |
-|---|---|---|
-| Design Tokens | 6 | `styles/tokens/*.css` |
-| UI Primitives | 10 | `components/ui/*.tsx` |
-| Typography | 4 | `components/typography/*.tsx` |
-| Circuit System | 5 + 3 SVG | `components/circuit/*.tsx`, `public/svg/` |
-| Navigation | 6 | `components/navigation/*.tsx` |
-| Preloader | 3 | `components/preloader/*.tsx` |
-| Scroll | 3 | `components/scroll/*.tsx` |
-| Transitions | 3 | `components/transitions/*.tsx` |
-| Sections | 14 | `components/sections/**/*.tsx` |
-| Hooks | 7 | `hooks/*.ts` |
-| Stores | 4 | `stores/*.ts` |
-| Providers | 3 | `providers/*.tsx` |
-| Lib/Utils | 5 | `lib/*.ts` |
-| Data | 3 | `data/*.ts` |
-| App (routes/api) | 6 | `app/**/*.tsx` |
+| Domain           | Files     | Key Output                                |
+| ---------------- | --------- | ----------------------------------------- |
+| Design Tokens    | 6         | `styles/tokens/*.css`                     |
+| UI Primitives    | 10        | `components/ui/*.tsx`                     |
+| Typography       | 4         | `components/typography/*.tsx`             |
+| Circuit System   | 5 + 3 SVG | `components/circuit/*.tsx`, `public/svg/` |
+| Navigation       | 6         | `components/navigation/*.tsx`             |
+| Preloader        | 3         | `components/preloader/*.tsx`              |
+| Scroll           | 3         | `components/scroll/*.tsx`                 |
+| Transitions      | 3         | `components/transitions/*.tsx`            |
+| Sections         | 14        | `components/sections/**/*.tsx`            |
+| Hooks            | 7         | `hooks/*.ts`                              |
+| Stores           | 4         | `stores/*.ts`                             |
+| Providers        | 3         | `providers/*.tsx`                         |
+| Lib/Utils        | 5         | `lib/*.ts`                                |
+| Data             | 3         | `data/*.ts`                               |
+| App (routes/api) | 6         | `app/**/*.tsx`                            |
 
 ---
 
 ## 16. Execution Phases
 
 ### Phase 0: Foundation (Minggu 1)
+
 - [ ] Design tokens (typography, colors, spacing)
 - [ ] Font setup (`next/font/google`)
 - [ ] Tailwind config extend
@@ -771,6 +778,7 @@ SIGNAL LOST · 404
 - [ ] Content inventory (semua teks, data skills, data projects)
 
 ### Phase 1: Core (Minggu 2-3)
+
 - [ ] UI primitives (Button, Card, Badge, Input, Modal)
 - [ ] Theme system (Zustand + ThemeProvider + toggle)
 - [ ] Navigation (Navbar, ScrollProgress, MobileMenu)
@@ -783,6 +791,7 @@ SIGNAL LOST · 404
 - [ ] Footer
 
 ### Phase 2: Animation & Polish (Minggu 4-5)
+
 - [ ] Preloader boot sequence
 - [ ] Custom cursor system
 - [ ] Scroll narrative + CircuitPath
@@ -793,6 +802,7 @@ SIGNAL LOST · 404
 - [ ] Audio integration (ambient + feedback sounds)
 
 ### Phase 3: Production (Minggu 6)
+
 - [ ] SEO metadata + OG image generation
 - [ ] Error pages (404, error, global-error)
 - [ ] Loading/skeleton states

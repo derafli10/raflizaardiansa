@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // React Compiler
@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
 
   // Image optimization configuration
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 year
@@ -22,37 +22,37 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: '/:path*',
         headers: [
           {
-            key: "X-Frame-Options",
-            value: "DENY",
+            key: 'X-Frame-Options',
+            value: 'DENY',
           },
           {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
           },
           {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
           },
           {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
           },
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains",
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains',
           },
         ],
       },
       // Cache static assets aggressively
       {
-        source: "/fonts/:path*",
+        source: '/fonts/:path*',
         headers: [
           {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -65,12 +65,7 @@ const nextConfig: NextConfig = {
 
   // Experimental features
   experimental: {
-    optimizePackageImports: [
-      "lucide-react",
-      "@headlessui/react",
-      "gsap",
-      "motion",
-    ],
+    optimizePackageImports: ['lucide-react', '@headlessui/react', 'gsap', 'motion'],
   },
 };
 

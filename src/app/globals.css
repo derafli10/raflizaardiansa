@@ -1,12 +1,12 @@
 /* Import Tailwind CSS */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Import Design Token Modules */
-@import "../styles/tokens/typography.css";
-@import "../styles/tokens/colors.css";
-@import "../styles/tokens/spacing.css";
-@import "../styles/tokens/theme-dark.css";
-@import "../styles/tokens/theme-light.css";
+@import '../styles/tokens/typography.css';
+@import '../styles/tokens/colors.css';
+@import '../styles/tokens/spacing.css';
+@import '../styles/tokens/theme-dark.css';
+@import '../styles/tokens/theme-light.css';
 
 /* Tailwind Theme Configuration */
 @theme inline {
@@ -51,7 +51,9 @@ body {
   line-height: var(--leading-normal);
   min-height: 100vh;
   overflow-x: hidden;
-  transition: background-color 300ms ease, color 300ms ease;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 /* Typography Base Styles */

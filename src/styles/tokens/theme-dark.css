@@ -37,8 +37,6 @@
   --gradient-substrate: radial-gradient(ellipse at 30% 20%, #111a16, #0a0f0d);
 
   /* Shadow effects */
-  --shadow-copper-glow: 0 0 20px rgba(212, 165, 116, 0.3),
-    0 0 40px rgba(212, 165, 116, 0.15);
-  --shadow-signal-glow: 0 0 15px rgba(6, 182, 212, 0.4),
-    0 0 30px rgba(6, 182, 212, 0.2);
+  --shadow-copper-glow: 0 0 20px rgba(212, 165, 116, 0.3), 0 0 40px rgba(212, 165, 116, 0.15);
+  --shadow-signal-glow: 0 0 15px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2);
 }

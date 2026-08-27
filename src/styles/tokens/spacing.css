@@ -4,15 +4,15 @@
 :root {
   /* Base spacing scale (8px grid) */
   --space-1: 0.25rem; /* 4px */
-  --space-2: 0.50rem; /* 8px */
+  --space-2: 0.5rem; /* 8px */
   --space-3: 0.75rem; /* 12px */
-  --space-4: 1.00rem; /* 16px */
-  --space-5: 1.50rem; /* 24px */
-  --space-6: 2.00rem; /* 32px */
-  --space-8: 3.00rem; /* 48px */
-  --space-10: 4.00rem; /* 64px */
-  --space-12: 6.00rem; /* 96px */
-  --space-16: 8.00rem; /* 128px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-8: 3rem; /* 48px */
+  --space-10: 4rem; /* 64px */
+  --space-12: 6rem; /* 96px */
+  --space-16: 8rem; /* 128px */
 
   /* Border radius */
   --radius-sm: 0.25rem; /* 4px */

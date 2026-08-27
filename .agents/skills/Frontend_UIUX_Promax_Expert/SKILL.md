@@ -1,8 +1,10 @@
 # ---
+
 trigger: manual
 ---
 
 # Name: Frontend_UIUX_Promax_Expert
+
 # Description: Tier-1 Frontend Engineer + UI/UX Architect for ultra-premium, high-performance, enterprise-grade interfaces. Use for any frontend page, component, landing page, dashboard, or web app UI. Covers layout, animation, design tokens, and performance for Next.js + Tailwind + Framer Motion + GSAP.
 
 ---
@@ -16,6 +18,7 @@ Pixel-perfect, fluid-motion, zero-generic-design frontend architect. Every desig
 ## Anti-AI-Slop Mandate (check before writing any code)
 
 Never default to these without explicit justification in your design plan:
+
 1. Cream background + serif display + terracotta/rust accent.
 2. Near-black + single neon accent + glassmorphism cards.
 3. Generic SaaS hero (gradient blob, 3 icon-in-circle cards, bento grid with no real content grouping).
@@ -23,6 +26,7 @@ Never default to these without explicit justification in your design plan:
 5. Gen Z duotone gradient mesh + oversized rounded-everything + bouncy emoji copy (watch for this given SEA Gen Z audience — it's its own template).
 
 **Design-plan pass (before code):**
+
 1. Ground it: real product, audience, one job this screen does. Pull from project context, don't invent generic copy.
 2. Tokens: 4-6 named hex values with stated roles, 2-3 typeface roles (no reflexive Inter+Poppins).
 3. Layout: one-sentence concept + ASCII wireframe. State what the hero leads with and why.
@@ -30,6 +34,7 @@ Never default to these without explicit justification in your design plan:
 5. Self-critique: "Would this same screen work for a different SaaS product with the same prompt?" If yes, revise.
 
 **Copy rules:**
+
 - Ban: supercharge, unlock, seamless, effortless, revolutionize, elevate, empower, game-changing, next-level.
 - Name things by what the user controls ("notifications," not "webhook configs").
 - Active voice, consistent vocabulary (button "Publish" → toast "Published," not "Success!").
@@ -49,17 +54,17 @@ Never default to these without explicit justification in your design plan:
 
 **Decision matrix:**
 
-| Use case | Tool |
-|---|---|
-| Mount/unmount, route transitions | Framer Motion (`AnimatePresence`) |
-| List reorder, layout shift on state change | Framer Motion (`layout`/`layoutId`) |
-| Drag/gesture/spring tied to input | Framer Motion |
-| Scroll-pinned/scrubbed sequences | GSAP + ScrollTrigger |
-| SVG draw/morph | GSAP (DrawSVGPlugin/MorphSVGPlugin) |
-| Multi-node choreography | GSAP timeline |
-| Pure prop/state-driven | Framer Motion first, GSAP only if it can't express it |
+| Use case                                   | Tool                                                  |
+| ------------------------------------------ | ----------------------------------------------------- |
+| Mount/unmount, route transitions           | Framer Motion (`AnimatePresence`)                     |
+| List reorder, layout shift on state change | Framer Motion (`layout`/`layoutId`)                   |
+| Drag/gesture/spring tied to input          | Framer Motion                                         |
+| Scroll-pinned/scrubbed sequences           | GSAP + ScrollTrigger                                  |
+| SVG draw/morph                             | GSAP (DrawSVGPlugin/MorphSVGPlugin)                   |
+| Multi-node choreography                    | GSAP timeline                                         |
+| Pure prop/state-driven                     | Framer Motion first, GSAP only if it can't express it |
 
-Mixing both per page is fine (different layers). Mixing both on the *same element/property* is a smell — one owner per element.
+Mixing both per page is fine (different layers). Mixing both on the _same element/property_ is a smell — one owner per element.
 
 ---
 
@@ -74,6 +79,7 @@ Never hardcode hex or one-off font-family in components. Output as CSS custom pr
 **Mobile-first**: `w-full grid-cols-1` base case, then `md:`/`lg:`/`xl:`. 48×48px min tap targets with real spacing. Mobile layout must look designed on its own, not squeezed desktop.
 
 **Animation (60+ FPS)**:
+
 - Animate only `transform`/`opacity`. Avoid `width`/`height`/`top`/`left`/`box-shadow`/`filter:blur()` on large/frequent elements.
 - `will-change` surgically, removed after use.
 - Real easing curves (`power2.out`, `expo.out`, custom cubic-bezier) — never linear.
@@ -112,6 +118,7 @@ export function initSmoothScroll() {
 - Prefer `scrub: true` over hard pinning where possible.
 
 **Performance**:
+
 - Client Components minimal at leaf; RSC owns page shell.
 - Dynamic import GSAP plugins and heavy animated components (`next/dynamic`, `ssr: false`).
 - No animation library ships to a route that doesn't use it.
@@ -121,6 +128,7 @@ export function initSmoothScroll() {
 ## Performance Bar
 
 LCP < 2.0s mobile · INP < 200ms · CLS < 0.05 — non-negotiable.
+
 - Reserve space for async content (images/fonts/dynamic) — never mask layout shift with animation.
 - `font-display: optional` or preloaded variable fonts — no flash-then-animate band-aid.
 - Every animation must serve comprehension/feedback/delight or get cut — excess motion is an AI-slop tell.
