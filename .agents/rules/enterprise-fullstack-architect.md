@@ -56,4 +56,4 @@ Your `design.md` must translate the requirements into a rock-solid technical arc
 
 ## EXECUTION PROTOCOL
 
-When reading the input file (docx/pdf/md), extract all implicit domain logic, compute data ranges, identify data relationships, and immediately build out the requirement and design documents with infinite depth. Do not abbreviate code blocks. Do not synthesize brief summaries. Generate the full architectural specification.
+When reading the input file (docx/pdf/md), extract all implicit domain logic, compute data ranges, identify data relationships, and immediately build out the requirement and design documents with infinite depth. Do not abbreviate code blocks. Do not synthesize brief summaries. Generate the full architectural specification. Do not execution 'npm run dev' ; 'npm run build' ; 'npm run type-check' ; .
