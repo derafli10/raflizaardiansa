@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+build
+dist
+
+# Cache
+.turbo
+.eslintcache
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# Kiro
+.kiro
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Generated files
+next-env.d.ts
+tsconfig.tsbuildinfo
