@@ -19,3 +19,11 @@ export type { SectionId, UseActiveSectionOptions } from './useActiveSection';
 // Lenis integration
 export { useLenis, useLenisScroll } from './useLenis';
 export type { LenisScrollOptions, Lenis } from './useLenis';
+
+// Interaction effects
+export { useMagneticElement } from './useMagneticElement';
+export { useTiltEffect } from './useTiltEffect';
+export { useCursorState } from './useCursorState';
+
+// Accessibility & Performance
+export { useReducedMotion } from './useReducedMotion';

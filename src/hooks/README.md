@@ -230,11 +230,52 @@ When testing components using these hooks:
 3. Mock Lenis instance for `useLenis` hooks
 4. Use `@testing-library/react` for hook testing
 
-## Future Hooks
+### Accessibility & Performance Hooks
 
-Planned hooks for task 3.2:
+#### `useReducedMotion()`
 
-- `useMagneticElement.ts` - GSAP-based magnetic pull effect
-- `useTiltEffect.ts` - 3D tilt on hover
-- `useCursorState.ts` - Custom cursor state management
-- `useReducedMotion.ts` - Accessibility motion detection
+Detects user's prefers-reduced-motion preference for accessibility compliance.
+
+**Requirements:** 11.7, 28.5
+
+**Usage:**
+
+```tsx
+import { useReducedMotion } from '@/hooks';
+
+function AnimatedCard() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.5,
+      }}
+    >
+      Content
+    </motion.div>
+  );
+}
+```
+
+**Returns:** `boolean` - `true` when user prefers reduced motion
+
+**Features:**
+
+- Monitors `prefers-reduced-motion: reduce` media query
+- Listens for changes to user preference
+- SSR-safe with proper window checks
+- Automatic cleanup on unmount
+- Supports older browsers with fallback API
+
+**Use Cases:**
+
+- Disable Framer Motion animations
+- Skip GSAP animations
+- Remove CSS transitions
+- Disable smooth scrolling
+- Conditional animation classes
+
+---

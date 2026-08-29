@@ -34,7 +34,7 @@ import { useNavStore } from '@/stores/nav-store';
  * @param delay - Minimum delay between executions in milliseconds
  * @returns Throttled function
  */
-function throttle<T extends (...args: any[]) => void>(
+function throttle<T extends (...args: unknown[]) => void>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
@@ -97,7 +97,7 @@ function calculateScrollProgress(): number {
  */
 export function useScrollProgress(): void {
   const setScrollProgress = useNavStore((state) => state.setScrollProgress);
-  const throttledUpdateRef = useRef<((...args: any[]) => void) | null>(null);
+  const throttledUpdateRef = useRef<((...args: unknown[]) => void) | null>(null);
 
   useEffect(() => {
     // SSR safety check

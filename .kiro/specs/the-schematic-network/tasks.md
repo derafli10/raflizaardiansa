@@ -70,7 +70,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Implement context export hooks: useTheme(), useLenis()
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 22.1, 22.2, 22.3, 22.4, 22.5, 22.6, 22.7_
 
-- [ ] 3. Custom React Hooks
+- [x] 3. Custom React Hooks
   - [x] 3.1 Create scroll and navigation hooks
     - Create `src/hooks/useScrollProgress.ts` to track scroll percentage
     - Create `src/hooks/useActiveSection.ts` with IntersectionObserver for section detection
@@ -78,19 +78,19 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Create `src/hooks/useLenis.ts` to access Lenis context for imperative scrollTo calls
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 22.6, 22.7_
 
-  - [ ] 3.2 Create interaction effect hooks
+  - [x] 3.2 Create interaction effect hooks
     - Create `src/hooks/useMagneticElement.ts` with GSAP-based magnetic pull effect
     - Create `src/hooks/useTiltEffect.ts` for 3D card tilt on mouse move
     - Create `src/hooks/useCursorState.ts` to manage custom cursor state changes
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8_
 
-  - [ ] 3.3 Create accessibility and performance hooks
+  - [x] 3.3 Create accessibility and performance hooks
     - Create `src/hooks/useReducedMotion.ts` to detect prefers-reduced-motion preference
     - Implement hook to disable animations when preference is active
     - _Requirements: 11.7, 28.5_
 
 - [ ] 4. UI Primitive Components (Atoms)
-  - [ ] 4.1 Create Button primitive component
+  - [-] 4.1 Create Button primitive component
     - Create `src/components/ui/Button.tsx` with CVA variants: primary, secondary, ghost
     - Implement sizes: sm, md, lg with proper spacing and font sizing
     - Add magnetic hover effect with data-magnetic attribute support
@@ -99,7 +99,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Export buttonVariants and ButtonProps
     - _Requirements: 7.1, 7.2, 20.1, 20.2, 28.2, 28.3_
 
-  - [ ] 4.2 Create Card primitive component
+  - [-] 4.2 Create Card primitive component
     - Create `src/components/ui/Card.tsx` with variants: default, elevated, interactive
     - Implement CardHeader, CardTitle, CardDescription, CardContent, CardFooter subcomponents
     - Add 3D tilt effect for interactive variant
@@ -107,7 +107,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Use forwardRef for all components
     - _Requirements: 7.3, 20.3_
 
-  - [ ] 4.3 Create form input components
+  - [-] 4.3 Create form input components
     - Create `src/components/ui/Input.tsx` with floating label and focus glow
     - Create `src/components/ui/Textarea.tsx` with similar styling
     - Implement proper ARIA labels and error state handling
@@ -115,7 +115,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Ensure 44x44px minimum touch target size
     - _Requirements: 7.6, 16.6, 16.7, 16.9, 27.3, 28.2, 28.10_
 
-  - [ ] 4.4 Create Badge and Tooltip components
+  - [-] 4.4 Create Badge and Tooltip components
     - Create `src/components/ui/Badge.tsx` with color-coding by category: skill, status, tag
     - Implement slide background fill animation on hover
     - Create `src/components/ui/Tooltip.tsx` with positioning: top, bottom, left, right

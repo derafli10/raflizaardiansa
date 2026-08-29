@@ -56,7 +56,7 @@ export interface UseScrollDirectionOptions {
  * @param delay - Minimum delay between executions in milliseconds
  * @returns Throttled function
  */
-function throttle<T extends (...args: any[]) => void>(
+function throttle<T extends (...args: unknown[]) => void>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
@@ -155,7 +155,7 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
 
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(null);
   const previousScrollY = useRef(0);
-  const throttledUpdateRef = useRef<((...args: any[]) => void) | null>(null);
+  const throttledUpdateRef = useRef<((...args: unknown[]) => void) | null>(null);
 
   useEffect(() => {
     // SSR safety check
