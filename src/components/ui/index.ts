@@ -15,3 +15,4 @@ export { Badge, badgeVariants, type BadgeProps } from './Badge';
 export { Tooltip, type TooltipProps, type TooltipPosition } from './Tooltip';
 export { Modal, ModalFooter, type ModalProps, type ModalSize } from './Modal';
 export { Skeleton, skeletonVariants, type SkeletonProps } from './Skeleton';
+export { CertificateCard, type CertificateCardProps } from './CertificateCard';
