@@ -132,7 +132,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Implement pulse animation matching component structure
     - _Requirements: 8.3, 8.4, 8.7, 20.5, 20.8, 26.3, 28.6_
 
-  - [ ] 4.6 Create Certificate Card component
+  - [x] 4.6 Create Certificate Card component
     - Create `src/components/ui/CertificateCard.tsx` with LinkedIn-style layout
     - Display issuer logo/icon, title, organization, dates, credential ID
     - Add "Show credential" button with ExternalLink icon
@@ -141,7 +141,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - _Requirements: 13.5, 13.6, 13.7, 13.8, 20.9, 18.6_
 
 - [ ] 5. Layout and Decorative Components
-  - [ ] 5.1 Create layout components
+  - [x] 5.1 Create layout components
     - Create `src/components/layout/Container.tsx` with responsive max-width and padding
     - Create `src/components/layout/Grid.tsx` with responsive grid system
     - Implement proper breakpoints matching Tailwind config
