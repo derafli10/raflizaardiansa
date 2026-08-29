@@ -107,7 +107,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Use forwardRef for all components
     - _Requirements: 7.3, 20.3_
 
-  - [-] 4.3 Create form input components
+  - [x] 4.3 Create form input components
     - Create `src/components/ui/Input.tsx` with floating label and focus glow
     - Create `src/components/ui/Textarea.tsx` with similar styling
     - Implement proper ARIA labels and error state handling
@@ -115,7 +115,7 @@ This implementation plan transforms the elite portfolio website design into a fu
     - Ensure 44x44px minimum touch target size
     - _Requirements: 7.6, 16.6, 16.7, 16.9, 27.3, 28.2, 28.10_
 
-  - [-] 4.4 Create Badge and Tooltip components
+  - [x] 4.4 Create Badge and Tooltip components
     - Create `src/components/ui/Badge.tsx` with color-coding by category: skill, status, tag
     - Implement slide background fill animation on hover
     - Create `src/components/ui/Tooltip.tsx` with positioning: top, bottom, left, right

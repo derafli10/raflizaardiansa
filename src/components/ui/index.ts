@@ -13,3 +13,5 @@ export { Input, type InputProps } from './Input';
 export { Textarea, type TextareaProps } from './Textarea';
 export { Badge, badgeVariants, type BadgeProps } from './Badge';
 export { Tooltip, type TooltipProps, type TooltipPosition } from './Tooltip';
+export { Modal, ModalFooter, type ModalProps, type ModalSize } from './Modal';
+export { Skeleton, skeletonVariants, type SkeletonProps } from './Skeleton';
