@@ -70,7 +70,7 @@ export function Navbar({ className }: NavbarProps) {
       {/* 2. Main Fixed Navigation Bar */}
       <header
         className={cn(
-          'z-sticky fixed top-0 right-0 left-0 transition-all duration-300',
+          'fixed top-0 right-0 left-0 z-100 transition-all duration-300',
           isHidden ? '-translate-y-full' : 'translate-y-0',
           isScrolled
             ? 'bg-substrate/85 border-trace/70 border-b shadow-lg backdrop-blur-md'
@@ -82,7 +82,7 @@ export function Navbar({ className }: NavbarProps) {
           {/* Brand Logo & System Moniker */}
           <a
             href="#hero"
-            aria-label="The Schematic Network - Rafli Zaardiansa"
+            aria-label="The Schematic Network - Rafliza Ardiansa"
             className={cn(
               'group flex items-center gap-3 select-none',
               'focus-visible:ring-copper focus-visible:ring-offset-substrate rounded-lg p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
@@ -101,7 +101,7 @@ export function Navbar({ className }: NavbarProps) {
             {/* Brand Text */}
             <div className="flex flex-col font-mono">
               <span className="text-text-primary group-hover:text-copper-bright text-xs font-bold tracking-widest uppercase transition-colors sm:text-sm">
-                Schematic
+                Raph
               </span>
               <span className="text-text-tertiary text-[9px] tracking-wider uppercase">
                 Network Node // 01
